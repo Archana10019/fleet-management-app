@@ -5,12 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+
+    body{
+        justify-content: center;
+    }
+    h2{
+        text-align: center;
+        font-size: large;
+        background-color: aliceblue;
+    }
+  
+    #cantainer{
+        box-sizing: border-box;
+        width: 200px;
+        height: auto;
+     
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #fleetlist{
+        margin-top: 20px;
+        padding: 15 px;
+        background-color: blanchedalmond;
+        border-radius: 10 px;;
+    }
+
+    #fleetlist li{
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        border-left: 4px solid cornsilk;
+        font-size: 15px;
+        justify-content: center;
+        text-align: center;
+    }
+ 
+
+
+</style>
+
+
+
 <body>
     <div class="sidebar">
         <h2> fleet form</h2>
         <form id="fleetform">
             <label> reg no of vehical</label>
-            <input type="text" id="regNo" required>
+            <input type="text" id="regno" required>
             <label> category</label>
             <select id="category" required>
                 <option> auto</option>
@@ -22,16 +68,23 @@
             <label>Driver name</label>
             <input type="text" id="drivername" required>
             <lable>Available</lable>
-            <select id="Available" required>
+            <select id="available" required>
             <option value="Available">Available</option>
              <option value="UnAvailable">Unavailable</option>
              </select>
              <button type="submit" class="btn" >add fleet</button>
+          
 
 
-        </form>
+        </form><br>
+        <br>
+
+
+            <button id="btn2" onclick="window.location.href=`index.html`">Go back to home</button>
 
     </div>
+    <br>
+
 
     <div class="container">
         <div class="content-box">
@@ -39,23 +92,26 @@
             <ul id="fleetlist"></ul>
         </div>
     </div>
-</body>
+
 <script>
     let form=document.getElementById("fleetform");
     let list =document.getElementById("fleetlist");
-    
+    form.addEventListener("submit",function(e){
+        e.preventDefault();
+        let reg= document.getElementById("regno").value;
+        let cat= document.getElementById("category").value;
+        let driver = document.getElementById("drivername").value;
+        let avail= document.getElementById("available").value;
 
 
+        let li=document.createElement("li");
+        li .textContent=`${reg}| ${cat} |${driver}| ${avail}`;
 
+        list.appendChild(li);
+        alert("fleet added sucessfully");
+        form.reset();
 
-
-
-
-
-
-
-
-
+    });
 
 
 
@@ -64,6 +120,6 @@
 
 
 
-
+</body>
 
 </html>
